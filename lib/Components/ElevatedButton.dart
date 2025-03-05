@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class Elevatedbutton extends StatelessWidget {
-  Elevatedbutton({
-    super.key,
-    required this.text,
-    required this.backColor,
-    required this.foreColor,
-  });
+  Elevatedbutton(
+      {super.key,
+      required this.text,
+      required this.backColor,
+      required this.foreColor,
+      required this.onPressed});
   String text;
   Color backColor;
   Color foreColor;
+  final VoidCallback onPressed;
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
@@ -21,7 +23,7 @@ class Elevatedbutton extends StatelessWidget {
         ),
         padding: EdgeInsets.symmetric(vertical: 15, horizontal: 30),
       ),
-      onPressed: () {},
+      onPressed: onPressed,
       child: Text(
         text,
         style: TextStyle(

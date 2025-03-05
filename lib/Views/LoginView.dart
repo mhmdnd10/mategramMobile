@@ -59,6 +59,9 @@ class _LoginViewState extends State<LoginView> {
                     text: "LOGIN",
                     backColor: Colors.purple,
                     foreColor: Colors.white,
+                    onPressed: () {
+                      Get.offAllNamed(AppRoute.home);
+                    },
                   ),
                 ),
               ],

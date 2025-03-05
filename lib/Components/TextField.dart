@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class Textfield extends StatelessWidget {
   Textfield({
     super.key,
@@ -8,12 +9,14 @@ class Textfield extends StatelessWidget {
     this.icon,
     this.inputType,
     required this.obsqureText,
+    this.onPressed,
   });
   String hintText;
   bool obsqureText;
   TextEditingController controller;
-  Icon? icon;
+  IconData? icon;
   TextInputType? inputType;
+  VoidCallback? onPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -22,6 +25,7 @@ class Textfield extends StatelessWidget {
       controller: controller,
       obscureText: obsqureText,
       decoration: InputDecoration(
+        suffixIcon: IconButton(onPressed: onPressed, icon: Icon(icon)),
         filled: true,
         fillColor: Colors.white,
         hintText: hintText,

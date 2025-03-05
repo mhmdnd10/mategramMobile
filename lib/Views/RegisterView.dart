@@ -83,6 +83,7 @@ class _RegisterViewState extends State<RegisterView> {
                     text: "REGISTER",
                     backColor: Colors.purple,
                     foreColor: Colors.white,
+                    onPressed: () {},
                   ),
                 ),
               ],
