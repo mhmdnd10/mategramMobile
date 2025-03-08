@@ -67,7 +67,21 @@ class _LoginViewState extends State<LoginView> {
               ],
             ),
             const SizedBox(
-              height: 15,
+              height: 25,
+            ),
+            GestureDetector(
+              onTap: () {
+                Get.toNamed(AppRoute.forgotPassword);
+              },
+              child: const Text(
+                "Forgot Password",
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+            const SizedBox(
+              height: 25,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,

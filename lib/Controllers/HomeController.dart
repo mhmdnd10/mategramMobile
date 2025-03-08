@@ -10,6 +10,10 @@ class HomeController extends GetxController {
       Get.offAllNamed(AppRoute.home);
     } else if (index == 1) {
       Get.toNamed(AppRoute.search);
+    } else if (index == 2) {
+      Get.toNamed(AppRoute.addPost);
+    } else {
+      Get.toNamed(AppRoute.profile);
     }
   }
 }
