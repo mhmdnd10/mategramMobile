@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:mategram/Components/PostLayout.dart';
 
 class PostTabView extends StatelessWidget {
   const PostTabView({super.key});

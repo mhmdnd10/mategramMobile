@@ -1,6 +1,7 @@
 // ignore: file_names
 import 'package:get/get.dart';
 import 'package:mategram/Bindings/ChangePasswordBinding.dart';
+import 'package:mategram/Bindings/CommentBinding.dart';
 import 'package:mategram/Bindings/EditProfileBinding.dart';
 import 'package:mategram/Bindings/ForgotPasswordBinding.dart';
 import 'package:mategram/Bindings/HomeBinding.dart';
@@ -11,6 +12,7 @@ import 'package:mategram/Bindings/SendForgotPasswordBinding.dart';
 import 'package:mategram/Routes/AppRoute.dart';
 import 'package:mategram/Views/AddPostView.dart';
 import 'package:mategram/Views/ChangePasswordView.dart';
+import 'package:mategram/Views/CommentView.dart';
 import 'package:mategram/Views/EditProfileView.dart';
 import 'package:mategram/Views/ForgotPasswordView.dart';
 import 'package:mategram/Views/HomeView.dart';
@@ -74,6 +76,11 @@ class AppPages {
       name: AppRoute.sendForgotPasswordCode,
       page: () => SendForgotPasswordView(),
       binding: SendForgotPasswordCodeBinding(),
-    )
+    ),
+    GetPage(
+      name: AppRoute.comment,
+      page: () => CommentView(),
+      binding: CommentBinding(),
+    ),
   ];
 }

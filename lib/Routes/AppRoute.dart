@@ -10,4 +10,5 @@ class AppRoute {
   static const String notification = '/notification';
   static const String forgotPassword = "/forgot-password";
   static const String sendForgotPasswordCode = '/send-forgot-password-code';
+  static const String comment = '/comment';
 }
