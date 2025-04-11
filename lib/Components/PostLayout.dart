@@ -3,19 +3,19 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:mategram/Routes/AppRoute.dart';
 
-class PostLayout extends StatefulWidget {
-  const PostLayout({super.key});
+class PostLayout extends StatelessWidget {
+  final List posts;
+  const PostLayout({super.key, required this.posts});
 
-  @override
-  State<PostLayout> createState() => _PostLayoutState();
-}
-
-class _PostLayoutState extends State<PostLayout> {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-      itemCount: 8,
+      itemCount: posts.length,
       itemBuilder: (context, index) {
+        final post = posts[index];
+        final imageUrl = post.media_url.isNotEmpty
+            ? "http://192.168.1.10/storage/${post.media_url}"
+            : null;
         return Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -30,7 +30,7 @@ class _PostLayoutState extends State<PostLayout> {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text("Mhmd"),
+                    Text(post.user_id),
                     const SizedBox(
                       height: 5,
                     ),
@@ -47,11 +47,21 @@ class _PostLayoutState extends State<PostLayout> {
             const SizedBox(
               height: 10,
             ),
-            Text("Description"),
+            Text(post.description),
             const SizedBox(
               height: 10,
             ),
-            Image.asset("lib/images/Mategram design.png"),
+            if (imageUrl != null)
+              ClipRRect(
+                borderRadius: BorderRadius.circular(12),
+                child: Image.network(
+                  imageUrl,
+                  fit: BoxFit.cover,
+                  errorBuilder: (context, error, stackTrace) {
+                    return Text("Error loading media");
+                  },
+                ),
+              ),
             const SizedBox(
               height: 10,
             ),

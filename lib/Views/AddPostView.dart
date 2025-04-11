@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
@@ -58,9 +57,7 @@ class _AddPostViewState extends State<AddPostView> {
                       ),
               ),
             ),
-            SizedBox(
-              height: 20,
-            ),
+            SizedBox(height: 20),
             TextField(
               maxLines: 5,
               controller: controller.description,
@@ -79,9 +76,7 @@ class _AddPostViewState extends State<AddPostView> {
                 ),
               ),
             ),
-            SizedBox(
-              height: 20,
-            ),
+            SizedBox(height: 20),
             Row(
               children: [
                 Expanded(
@@ -89,7 +84,9 @@ class _AddPostViewState extends State<AddPostView> {
                     text: "Add Post",
                     backColor: Colors.red,
                     foreColor: Colors.white,
-                    onPressed: () {},
+                    onPressed: () {
+                      controller.uploadPost(_image);
+                    },
                   ),
                 ),
               ],

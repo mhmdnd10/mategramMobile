@@ -10,6 +10,7 @@ class Textfield extends StatelessWidget {
     this.inputType,
     required this.obsqureText,
     this.onPressed,
+    this.onChanged,
   });
   String hintText;
   bool obsqureText;
@@ -17,10 +18,12 @@ class Textfield extends StatelessWidget {
   IconData? icon;
   TextInputType? inputType;
   VoidCallback? onPressed;
+  Function(String)? onChanged;
 
   @override
   Widget build(BuildContext context) {
     return TextField(
+      onChanged: onChanged,
       keyboardType: inputType,
       controller: controller,
       obscureText: obsqureText,

@@ -9,6 +9,7 @@ import 'package:mategram/Bindings/LoginBinding.dart';
 import 'package:mategram/Bindings/RegisterBinding.dart';
 import 'package:mategram/Bindings/SearchBinding.dart';
 import 'package:mategram/Bindings/SendForgotPasswordBinding.dart';
+import 'package:mategram/Bindings/VerifyEmailBinding.dart';
 import 'package:mategram/Routes/AppRoute.dart';
 import 'package:mategram/Views/AddPostView.dart';
 import 'package:mategram/Views/ChangePasswordView.dart';
@@ -22,6 +23,7 @@ import 'package:mategram/Views/ProfileView.dart';
 import 'package:mategram/Views/RegisterView.dart';
 import 'package:mategram/Views/SearchView.dart';
 import 'package:mategram/Views/SendForgotPasswordView.dart';
+import 'package:mategram/Views/VerifyEmailView.dart';
 
 class AppPages {
   static final List<GetPage> pages = [
@@ -81,6 +83,11 @@ class AppPages {
       name: AppRoute.comment,
       page: () => CommentView(),
       binding: CommentBinding(),
+    ),
+    GetPage(
+      name: AppRoute.verifyEmail,
+      page: () => VerifyEmailView(),
+      binding: VerifyEmailBinding(),
     ),
   ];
 }

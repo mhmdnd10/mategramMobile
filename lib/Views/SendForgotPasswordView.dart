@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mategram/Components/ElevatedButton.dart';
+import 'package:mategram/Components/TextField.dart';
 import 'package:mategram/Controllers/SendForgotPasswordController.dart';
 
 class SendForgotPasswordView extends StatefulWidget {
@@ -19,16 +20,21 @@ final List<FocusNode> focusNodes = List.generate(
 );
 
 class _SendForgotPasswordViewState extends State<SendForgotPasswordView> {
+  String? email;
+  @override
+  void initState() {
+    email = Get.arguments;
+    print(email);
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
-    final controllers = [
-      controller.index1,
-      controller.index2,
-      controller.index3,
-      controller.index4,
-      controller.index5,
-      controller.index6,
-    ];
+    if (email == null) {
+      return const Scaffold(
+        body: Center(child: Text("No email provided")),
+      );
+    }
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.grey[300],
@@ -50,45 +56,32 @@ class _SendForgotPasswordViewState extends State<SendForgotPasswordView> {
               const SizedBox(
                 height: 25,
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: List.generate(
-                  6,
-                  (index) => Container(
-                    margin: const EdgeInsets.all(4),
-                    height: 50,
-                    width: 50,
-                    decoration: BoxDecoration(
-                      color: Colors.grey,
-                      shape: BoxShape.rectangle,
-                    ),
-                    child: TextField(
-                      controller: controllers[index],
-                      focusNode: focusNodes[index],
-                      textAlign: TextAlign.center,
-                      keyboardType: TextInputType.number,
-                      maxLength: 1,
-                      decoration: const InputDecoration(
-                        border: OutlineInputBorder(),
-                        counterText: '',
-                      ),
-                      onChanged: (value) {
-                        if (value.isNotEmpty) {
-                          if (index < 5) {
-                            FocusScope.of(context)
-                                .requestFocus(focusNodes[index + 1]);
-                          } else {
-                            focusNodes[index].unfocus();
-                          }
-                        } else if (value.isEmpty && index > 0) {
-                          FocusScope.of(context)
-                              .requestFocus(focusNodes[index - 1]);
-                        }
-                      },
-                    ),
-                  ),
+              Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+                Textfield(
+                  hintText: "token",
+                  controller: controller.token,
+                  obsqureText: false,
                 ),
-              ),
+                const SizedBox(
+                  height: 10,
+                ),
+                Textfield(
+                  hintText: "new password",
+                  controller: controller.password,
+                  obsqureText: true,
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                Textfield(
+                  hintText: "confirm password",
+                  controller: controller.confirmPassword,
+                  obsqureText: true,
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+              ]),
               const SizedBox(
                 height: 25,
               ),
@@ -99,7 +92,9 @@ class _SendForgotPasswordViewState extends State<SendForgotPasswordView> {
                           text: "Verify Code",
                           backColor: Colors.red,
                           foreColor: Colors.white,
-                          onPressed: () {})),
+                          onPressed: () {
+                            controller.resetPassword(email!);
+                          })),
                 ],
               ),
             ],

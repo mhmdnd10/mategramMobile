@@ -37,7 +37,7 @@ class _LoginViewState extends State<LoginView> {
               height: 30,
             ),
             Textfield(
-              hintText: "Email",
+              hintText: "Username",
               controller: controller.username,
               obsqureText: false,
             ),
@@ -60,7 +60,8 @@ class _LoginViewState extends State<LoginView> {
                     backColor: Colors.purple,
                     foreColor: Colors.white,
                     onPressed: () {
-                      Get.offAllNamed(AppRoute.home);
+                      // Get.offAllNamed(AppRoute.home);
+                      controller.login();
                     },
                   ),
                 ),

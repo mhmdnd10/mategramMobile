@@ -16,10 +16,16 @@ final HomeController controller = Get.put(HomeController());
 
 class _HomeViewState extends State<HomeView> {
   @override
+  void initState() {
+    super.initState();
+    controller.fetchPosts();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return RefreshComponent(
       onRefresh: () async {
-        await Future.delayed(const Duration(seconds: 1));
+        await controller.fetchPosts();
       },
       child: Scaffold(
         appBar: AppBar(
@@ -79,7 +85,17 @@ class _HomeViewState extends State<HomeView> {
                   },
                 ),
               ),
-              Expanded(child: PostLayout()),
+              Expanded(
+                child: Obx(() {
+                  if (controller.isLoading.value) {
+                    return Center(child: CircularProgressIndicator());
+                  } else if (controller.posts.isEmpty) {
+                    return Center(child: Text("No posts found."));
+                  } else {
+                    return PostLayout(posts: controller.posts);
+                  }
+                }),
+              ),
             ],
           ),
         ),

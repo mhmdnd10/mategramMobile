@@ -4,7 +4,8 @@ import 'package:mategram/Routes/AppPages.dart';
 import 'package:mategram/Routes/AppRoute.dart';
 import 'package:mategram/Views/RegisterView.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(const MyApp());
 }
 

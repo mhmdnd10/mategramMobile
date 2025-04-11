@@ -56,7 +56,8 @@ class _ForgotPasswordViewState extends State<ForgotPasswordView> {
                     backColor: Colors.red,
                     foreColor: Colors.white,
                     onPressed: () {
-                      Get.toNamed(AppRoute.sendForgotPasswordCode);
+                      // Get.toNamed(AppRoute.sendForgotPasswordCode);
+                      controller.sendResetLink();
                     },
                   ),
                 ),
